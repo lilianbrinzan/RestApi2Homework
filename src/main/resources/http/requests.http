@@ -1,7 +1,22 @@
-POST http://localhost:8080/users
+### user 1
+POST http://localhost:8080/api/users
 Content-Type: application/json
 
 {
   "email": "lilianbrinzan@gmail.com",
   "password": "qwerty009"
 }
+### user 2
+
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+"email": "macovei@gmail.com",
+"password": "qwerty011"
+}
+
+### all users
+
+GET http://localhost:8080/api/users

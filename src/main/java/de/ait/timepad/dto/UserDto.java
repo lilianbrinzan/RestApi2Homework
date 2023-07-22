@@ -6,10 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
-
-
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Data
@@ -29,6 +27,12 @@ public class UserDto {
                 .state(user.getState().name())
                 .role(user.getRole().name())
                 .build();
+    }
+
+    public static List<UserDto> from(List<User> users){
+        return users.stream()
+                .map(UserDto::from)
+                .collect(Collectors.toList());
     }
 
 }

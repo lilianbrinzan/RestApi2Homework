@@ -2,6 +2,7 @@ package de.ait.timepad.repositories.impl;
 
 import de.ait.timepad.models.User;
 import de.ait.timepad.repositories.UsersRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -16,6 +17,15 @@ public class UsersRepositoryListImpl implements UsersRepository {
     public void save(User user) {
         user.setId((long) users.size() + 1);
         users.add(user);
+    }
 
+    @Override
+    public List<User> findAll() {
+        return new ArrayList<>(users);
+    }
+
+    @Override
+    public void clear() {
+        users.clear();
     }
 }

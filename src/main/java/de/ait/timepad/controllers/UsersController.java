@@ -1,28 +1,29 @@
-package de.ait.timepad.controller;
+package de.ait.timepad.controllers;
 
 import de.ait.timepad.dto.NewUserDto;
 import de.ait.timepad.dto.UserDto;
-import de.ait.timepad.models.User;
+import de.ait.timepad.dto.UsersDto;
 import de.ait.timepad.services.UsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 
 @RequiredArgsConstructor
-@Controller
+@RestController
+@RequestMapping("/api/users")
 public class UsersController {
 
     private final UsersService usersService;
 
-    @PostMapping("/users")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
     public UserDto addUser(@RequestBody NewUserDto newUser){
         return usersService.addUser(newUser);
+    }
+    @GetMapping
+    public UsersDto getAllUsers(){
+        return usersService.getAllUsers();
     }
 }
